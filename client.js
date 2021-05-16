@@ -1,5 +1,5 @@
-const helper = require("./helpers");
-const messagingApi = require("./messaging_api.js");
+const helper = require("./helper");
+const messagingApi = require("./message_api.js");
 const readline = require("readline");
 
 const displayedMessages = {};
@@ -37,7 +37,7 @@ function pollMessages() {
 
 function streamMessage() {
   const messagingSocket = messagingApi.createMessagingSocket();
-  messageingSocket.on("message", (data) => {
+  messagingSocket.on("message", (data) => {
     const message = JSON.parse(data);
     const messageAlreadyDisplayed = message.id in displayedMessages;
     if (!messageAlreadyDisplayed) displayMessage(message);

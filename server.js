@@ -1,5 +1,5 @@
-import express, { json } from "express";
-import expressWs from "express-ws";
+const express = require("express");
+const expressWs = require("express-ws");
 
 const app = express();
 expressWs(app);
@@ -9,7 +9,7 @@ const messages = [
 ];
 const sockets = [];
 
-app.use(json());
+app.use(express.json());
 
 app.listen(3001, () => {
   console.log("Listening to port 3001");
